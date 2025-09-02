@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../../domain/policy/wallet_policy.dart';
 
 /// Dialog for creating a new wallet
 class CreateWalletDialog extends StatefulWidget {
@@ -43,8 +44,8 @@ class _CreateWalletDialogState extends State<CreateWalletDialog> {
                 if (value == null || value.trim().isEmpty) {
                   return 'Wallet name is required';
                 }
-                if (value.trim().length > 50) {
-                  return 'Wallet name cannot exceed 50 characters';
+                if (value.trim().length > WalletPolicy.maxNameLength) {
+                  return 'Wallet name cannot exceed ${WalletPolicy.maxNameLength} characters';
                 }
                 return null;
               },
